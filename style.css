@@ -4,7 +4,7 @@
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -22,16 +22,32 @@ body {
     flex-direction : column ;
     gap: 20px;
     align-items: center;
-    margin: 30px auto;
+    margin: 30px auto 0;
     width: 90%;
     
+}
+
+.nav__reserver button {
+    border: 1px bold black;
+    padding: 15px 40px ;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #3032FF;
+         
 }
 
 
 
 
 
-.nav__reserver--nomDays 
+.nav__reserver--nomDays {
+    display: grid;
+    grid-template-columns: repeat(7 , 1fr);
+    width: 100%;
+    justify-items: center;
+    font-size: 30px;
+    
+}
 
 
 .callendri {
@@ -75,10 +91,11 @@ body {
     flex-direction: column;
     background-color: yellow;
     align-items: center;
-    gap: 15px;
+    gap: 3px;
     padding: 10px;
     border-radius: 20px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .detaille__reservation span:last-child  {
