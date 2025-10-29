@@ -7,10 +7,9 @@ body {
     overflow: hidden;
 }
 
+
 .nav {
     background-color: #1500FF;
-    display: flex;
-    justify-content: space-between;
     padding: 30px 50PX  ;
 }
 
@@ -18,30 +17,22 @@ body {
     font-size : 45px ;
 }
 
-.nav__cherch {
-    align-self: center;
-    margin: 0 auto;
-    position: relative;
+.nav__reserver{
+    display: flex;
+    flex-direction : column ;
+    gap: 20px;
+    align-items: center;
+    margin: 30px auto;
+    width: 90%;
+    
 }
 
-.nav__cherch::before {
-    content: '';
-    position: absolute;
-    top: 5px ;
-    left: 7px;
-    background-image: url(image/search-interface-symbol.png);
-    background-size: cover;
-    background-position: center;
-    width: 17px ;
-    height: 17px;
-}
 
-.nav__cherch input {
-    padding: 6px 30px;
-    border: none ;
-    border-radius : 20px ;
-    outline: none;
-}
+
+
+
+.nav__reserver--nomDays 
+
 
 .callendri {
     display: grid;
@@ -57,7 +48,7 @@ body {
     height: auto;
     display: grid;
     grid-template-rows: 100px 1FR;
-    padding: 20px;
+    padding: 20px 10px;
     transition: all 0.3s ease;
 }
 
@@ -70,6 +61,10 @@ body {
     pointer-events: none;
 }
 .courrent__date {
+    padding: 5px;
+    
+}
+.courrent__date span {
     font-size: 1.5rem;
     font-weight: bold;
 
@@ -86,8 +81,8 @@ body {
     font-weight: bold;
 }
 
-.nemr__UserReserver {
-    font-size: 14px;
+.detaille__reservation span:last-child  {
+    font-size: 12px;
 }
 
 
