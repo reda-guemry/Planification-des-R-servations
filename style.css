@@ -2,10 +2,9 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
-
-body {
-    /* overflow: hidden; */
-}
+/*========================*/
+/* part css for nav bar  and nav barc calêndrier  */
+/*======================*/
 
 
 .nav {
@@ -49,6 +48,11 @@ body {
     
 }
 
+/*========================*/
+/* part css for calendrier   */
+/*======================*/
+
+
 
 .callendri {
     display: grid;
@@ -89,7 +93,6 @@ body {
 .detaille__reservation {
     display: flex;
     flex-direction: column;
-    background-color: yellow;
     align-items: center;
     gap: 3px;
     padding: 10px;
@@ -103,5 +106,27 @@ body {
 }
 
 
+/*========================*/
+/* part css for formuler du add un reseerve   */
+/*======================*/
 
+
+
+.formReservation {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 35%;
+    display: grid;
+    gap: 20px;
+    padding-left:20px ;
+    transform: translate(-50% ,-50%);
+    background: white;    
+}
+
+.form-input {
+    display: grid;
+    gap: 20px;
+
+}
 
