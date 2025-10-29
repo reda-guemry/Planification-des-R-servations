@@ -112,13 +112,12 @@
 
 
 .sectionform {
-    /* display: none; */
+    display: none;
     position: fixed;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5 );
@@ -130,7 +129,8 @@
     display: grid;
     gap: 20px;
     padding: 20px ;
-    background: white;    
+    background: white;  
+    position: relative;  
 }
 
 .form-input {
@@ -141,6 +141,38 @@
 
 .form-input-modif {
     display : flex ;
+    flex-direction: column;
+}
+
+.form-input-modif input
+,.form-input-modif select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccccccfa;
     
 }
 
+.form-input button {
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    width: 40%;
+
+}
+
+.closs__form {
+    position: absolute ;
+    top : 10px ;
+    right : 20px ;
+    font-size: 30px;
+    color : gray ;
+    cursor: pointer;
+    padding: 0 7px;
+    border-radius: 50%;
+
+}
+.closs__form:hover {
+    background-color: #DEDEDE ;
+}

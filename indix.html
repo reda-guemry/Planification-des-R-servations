@@ -34,19 +34,12 @@
             <div class="callendri">
                 <div class="days activ">
                     <div class="courrent__date">
-                        <span> 23 VEN oct</span>
                     </div>
                     <div class="detaille__reservation">
-                        <span>13:00</span>
-                        <span>vip</span>
-                        <span>ana li mreserver</span>
+                        
                     </div>
                     
-                    <div class="detaille__reservation">
-                        <span>13:00</span>
-                        <span>vip</span>
-                        <span>ana li mreserver</span>
-                    </div>
+                    <div class="detaille__reservation"></div>
                 </div>
                 <div class="days activ"></div>
                 <div class="days activ"></div>
@@ -62,16 +55,18 @@
 
         <section class="sectionform">
             <div class="formReservation">
+                <span class="closs__form">&times;</span>
                 <h3>Nouvelle réservation</h3>
                 <form class="form-input" action="#">
                     <div class="form-input-modif">
                         <label for="username">Nom du client</label>
-                        <input id="username" type="text">
+                        <input id="username" type="text" required>
                     </div>
 
-                    <div>
-                        <label for="username">Heure de début</label>
-                        <select name="hours" id="heurdebut">
+                    <div class="form-input-modif">
+                        <label for="username">day pour reservations</label>
+                        <select name="hours" id="heurdebut" required>
+                            <option value="">----</option>
                             <option value="Lundi">Lundi</option>
                             <option value="Mardi">Mardi</option>
                             <option value="Mercredi">Mercredi</option>
@@ -80,9 +75,9 @@
                         </select>
                     </div>
 
-                    <div>
+                    <div class="form-input-modif">
                         <label for="username">Heure de début</label>
-                        <select name="hours" id="heurdebut">
+                        <select name="hours" id="heurdebut" required>
                             <option value="">--:--</option>
                             <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
@@ -99,9 +94,9 @@
                         </select>
                     </div>
 
-                    <div>
+                    <div class="form-input-modif">
                         <label for="heurdefin">Heure de fin</label>
-                        <select name="hours" id="heurdefin">
+                        <select name="hours" id="heurdefin" required>
                             <option value="">--:--</option>
                             <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
@@ -118,9 +113,9 @@
                         </select>
                     </div>
 
-                    <div>
+                    <div class="form-input-modif">
                         <label for="typereserve">Type de réservation</label>
-                        <select name="type" id="typereserve">
+                        <select name="type" id="typereserve" required>
                             <option value="">Sélectionnez</option>
                             <option value="sur place">Sur place</option>
                             <option value="VIP">VIP</option>
