@@ -115,7 +115,7 @@
                         </select>
                     </div>
                     
-                    <button type="submit" >Ajouter la réservation </button>
+                    <button class="addreserve" type="submit" >Ajouter la réservation </button>
                 </form>
             </div>
         </section>
@@ -127,7 +127,7 @@
 
         <section class="sectionform" id="formModdifications">
             <div class="formReservation">
-                <span id="close__pop" class="closs__form">&times;</span>
+                <span id="clos_modifform" class="closs__form">&times;</span>
                 <h3>Modifier ou supprumer réservation</h3>
                 <form class="form-input" action="#">
                     <div class="form-input-modif">
@@ -167,8 +167,8 @@
                     </div>
 
                     <div class="form-input-modif">
-                        <label for="heurdefin">Nouveu Heure de fin</label>
-                        <select name="hours" id="heurdefin" required>
+                        <label for="modif-heurdefin">Nouveu Heure de fin</label>
+                        <select name="hours" id="modif-heurdefin" required>
                             <option value="">--:--</option>
                             <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
@@ -186,8 +186,8 @@
                     </div>
 
                     <div class="form-input-modif">
-                        <label for="typereserve">Nouveu Type de réservation</label>
-                        <select name="type" id="typereserve" required>
+                        <label for="modif-typereserve">Nouveu Type de réservation</label>
+                        <select name="type" id="modif-typereserve" required>
                             <option value="">Sélectionnez</option>
                             <option value="sur place">Sur place</option>
                             <option value="VIP">VIP</option>
@@ -195,8 +195,8 @@
                         </select>
                     </div>
                     <div class="">
-                        <button class="modifier" >Ajouter modifications</button>
-                        <button class="supprumer" >Supprumer reservations</button>
+                        <button type="submit" class="modifier" >Enregistrer</button>
+                        <button type="submit" class="supprumer" >Supprumer reservations</button>
                     </div>
 
                 </form>

@@ -11,9 +11,11 @@ let selecthourdebut = document.getElementById("heurdebut");
 let selecthoursfin  = document.getElementById("heurdefin") ;
 let selectrypreserve  = document.getElementById("typereserve") ;
 let popformmodifi = document.getElementById("formModdifications");
-let inputmodifiuser = document.getElementById("modifi-username")
-let modifierselectdzy = document.getElementById("modifie-day-resrve")
-let
+let inputmodifiuser = document.getElementById("modifi-username");
+let modifierselectday = document.getElementById("modifie-day-resrve");
+let modifselectheurdebut = document.getElementById("modif-heurdebut");
+let modifelectheurfin = document.getElementById("modif-heurdefin");
+let modifselecttypereserve = document.getElementById("modif-typereserve");
 
 let reservetions = [];
 
@@ -27,18 +29,20 @@ document.addEventListener("click" , function(e){
         addpardyas(e.target.dataset.day);
     }else if(e.target.classList.contains("detaille__reservation")){
         console.log(e.target.dataset.id);
-        
         modifier(e.target.dataset.id)
+    }else if(e.target.id === "clos_modifform"){
+       popformmodifi.style.display = "none" 
     }
 })
 
 function cleardata(){
-        inputname.value = "";
+    inputname.value = "";
     selectday.value = "";
     selecthourdebut.value = "";
     selecthoursfin.value = "";
     selectrypreserve.value = "";
 }
+
 
 function addpardyas(data){
     jourSelect.value = data ;
@@ -54,8 +58,6 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     if(!result){
         return;
     }
-
-    
 
     const resreve = {
         nom : inputname.value,
@@ -73,6 +75,23 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
 
     affichreservation(resreve);
 })
+
+function validdatamodif(){
+    for(let i = 0 ; i < inputmodifiuser.value.length ; i++){
+        let char = inputname.value[i];
+        if(!isNaN(char) && char !== " "){
+            alert("Le nom ne doit pas contenir de chiffres !");
+            return false;
+        }
+    }
+    
+    if(modifelectheurfin.value <= modifselectheurdebut.value){
+        alert("L'heure de fin doit être après l'heure de début !");
+        return false ;
+    }
+    return true;
+}
+
 
 function validdata(){
     for(let i = 0 ; i < inputname.value.length ; i++){
@@ -123,13 +142,33 @@ function modifier(element){
     reservetions.forEach((elemModi) => {
         if(element == elemModi.ID){
 
-            inputname.value = elemModi.nom;
-            selectday.value = elemModi.jour;
-            selecthourdebut.value = elemModi.dateDebut;
-            selecthoursfin.value = elemModi.datefin;
-            selectrypreserve.value = elemModi.typeReserve;
+            inputmodifiuser.value = elemModi.nom;
+            modifierselectday.value = elemModi.jour;
+            modifselectheurdebut.value = elemModi.dateDebut;
+            modifelectheurfin.value = elemModi.datefin;
+            modifselecttypereserve.value = elemModi.typeReserve;
             formModdifications.style.display = "flex";
-            
+
+
+
+            document.querySelector(".modifier").addEventListener("submit" , function(e) {
+                
+                if(e.target.classList.contains("modifier")){
+                    e.preventDefault();
+
+                    validdatamodif() ; 
+
+                    elemModi.nom = inputmodifiuser.value;
+                    elemModi.jour = modifierselectday.value ;
+                    elemModi.dateDebut = modifselectheurdebut.value ;
+                    elemModi.datefin = modifelectheurfin.value ;
+                    elemModi.typeReserve = modifselecttypereserve.value ;
+                    
+                }
+                
+                
+
+            })
         }
     })
 }

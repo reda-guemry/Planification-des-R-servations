@@ -161,8 +161,12 @@
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    width: 49%;
+
+}
+
+.addreserve {
     background-color: #007bff;
-    width: 40%;
 
 }
 
