@@ -16,14 +16,23 @@ let reservetions = [];
 document.addEventListener("click" , function(e){
     if(e.target.tagName === "BUTTON"){
         popup.style.display = "flex";
+    }else if(e.target.id === "close__pop"){
+        popup.style.display = "none";
+        cleardata();
     }else if(e.target.dataset.day){
         addpardyas(e.target.dataset.day);
     }else if(e.target.classList.contains("detaille__reservation")){
-        console.log(e.target.dataset.id);
-        
         modifier(e.target.dataset.id)
     }
 })
+
+function cleardata(){
+        inputname.value = "";
+    selectday.value = "";
+    selecthoursebut.value = "";
+    selecthoursfin.value = "";
+    selectrypreserve.value = "";
+}
 
 function addpardyas(data){
     jourSelect.value = data ;
@@ -44,51 +53,35 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
         typeReserve : selectrypreserve.value,
         ID : jenereatId 
     }
-
     jenereatId++ ;
 
-    for(let i = 0 ; i < resreve.nom.length ; i++){
-        let char = resreve.nom[i];
+    reservetions.push(resreve);
+    popup.style.display = "none";
+    alert('Réservation ajoutée avec succès !');
+    
+    cleardata();      
 
+    affichreservation(resreve);
+})
+
+function validdata(){
+    for(let i = 0 ; i < inputname.value.length ; i++){
+        let char = inputname.value[i];
         if(!isNaN(char) && char !== " "){
             alert("Le nom ne doit pas contenir de chiffres !");
             return false ;
         }
     }
     
-    if(resreve.datefin <= resreve.dateDebut){
+    if(selecthoursebut.value <= selecthoursebut.value){
         alert("L'heure de fin doit être après l'heure de début !");
         return false ;
     }
-     if(!resreve.datefin ||!resreve.jour ||!resreve.dateDebut ||!resreve.typeReserve ) {
+     if(!inputname.value ||!selectday.value ||!dateDebut.validdata ||!resreve.typeReserve ) {
         alert("Veuillez remplir tous les champs obligatoires !");
         return false ;
-     }
-    
-    reservetions.push(resreve);
-    popup.style.display = "none";
-    alert('Réservation ajoutée avec succès !');
-    
-    inputname.value = "";
-    selectday.value = "";
-    selecthoursebut.value = "";
-    selecthoursfin.value = "";
-    selectrypreserve.value = "";
-
-    document.addEventListener("click" , function(e){
-         if(e.target.id === "close__pop"){
-            popup.style.display = "none";
-            inputname.value = "";
-            selectday.value = "";
-            selecthoursebut.value = "";
-            selecthoursfin.value = "";
-            selectrypreserve.value = "";
-         }
-    })
-    affichreservation(resreve);
-    console.log(reservetions);
-})
-
+    }
+}
 
 function affichreservation(element) {
     days.forEach((res) => {
@@ -121,23 +114,18 @@ function affichreservation(element) {
 }
 
 function modifier(element){
-    console.log("wa dkhalt")
     reservetions.forEach((elemModi) => {
         if(element == elemModi.ID){
-            console.log("wa dkhalt ta lconditions")
 
             inputname.value = elemModi.nom;
             selectday.value = elemModi.jour;
             selecthoursebut.value = elemModi.dateDebut;
             selecthoursfin.value = elemModi.datefin;
             selectrypreserve.value = elemModi.typeReserve;
-
             popup.style.display = "flex";
-
+            
         }
     })
-
-
 }
 
 
