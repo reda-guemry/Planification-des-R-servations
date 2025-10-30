@@ -30,13 +30,19 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     
     e.preventDefault();
 
+    let inputname = document.getElementById("username") ;
+    let selectday = document.getElementById("day-resrve");
+    let selecthoursebut = document.getElementById("heurdebut");
+    let selecthoursfin  = document.getElementById("heurdefin") ;
+    let selectrypreserve  = document.getElementById("typereserve") ;
+
 
     const resreve = {
-        nom : document.getElementById("username").value,
-        jour : document.getElementById("day-resrve").value,
-        dateDebut : document.getElementById("heurdebut").value,
-        datefin : document.getElementById("heurdefin").value,
-        typeReserve : document.getElementById("typereserve").value
+        nom : inputname.value,
+        jour : selectday.value,
+        dateDebut : selecthoursebut.value,
+        datefin : selecthoursfin.value,
+        typeReserve : selectrypreserve.value
     }
 
     for(let i = 0 ; i < resreve.nom.length ; i++){
@@ -59,39 +65,47 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     
     reservetions.push(resreve);
     popup.style.display = "none";
-    affichreservations();
     alert('Réservation ajoutée avec succès !');
-
     
+    inputname.value = "";
+    selectday.value = "";
+    selecthoursebut.value = "";
+    selecthoursfin.value = "";
+    selectrypreserve.value = "";
+
+    affichreservationUnique(resreve);
     console.log(reservetions);
 })
 
 
-function affichreservations() {
-
+function affichreservationUnique(element) {
     days.forEach((res) => {
+        if (res.dataset.day === element.jour) {
+            
+            const newreserve = document.createElement("div");
+            newreserve.classList.add("detaille__reservation");
 
-        reservetions.forEach((element) => {
-            if(res.dataset.day === element.jour){
-                const newreserve = document.createElement("div");
-                newreserve.classList.add("detaille__reservation");
-                switch(element.typeReserve){
-                    case "Sur place" : 
-                        newreserve.style.background = "green";
-                        break ;
-                    case "VIP" : 
-                        newreserve.style.background = "gold";
-                        break ;
-                    case "Anniversaire" : 
-                        newreserve.style.background = "red";
-                        break ;
-                }
-                newreserve.textContent = `${element.nom} (${element.typeReserve}) ${element.dateDebut} - ${element.datefin}`;
-                res.appendChild(newreserve);
+            switch (element.typeReserve) {
+                case "sur place":
+                    newreserve.style.background = "gray";
+                    break;
+                case "VIP":
+                    newreserve.style.background = "gold";
+                    break;
+                case "anniversaire":
+                    newreserve.style.background = "red";
+                    break;
             }
-        });
-    })
 
+            newreserve.innerHTML = `<span>${element.nom}</span> 
+                <span>(${element.typeReserve})</span>
+                <span>${element.dateDebut} - ${element.datefin}</span>`;
+
+            res.appendChild(newreserve);
+            
+        }
+    });
 }
+
 
 
