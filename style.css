@@ -129,9 +129,10 @@
     width: 35%;
     display: grid;
     gap: 20px;
-    padding: 20px ;
+    padding: 30px ;
     background: white;  
     position: relative;  
+    border-radius: 20px;
 }
 
 .form-input {

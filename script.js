@@ -20,8 +20,6 @@ document.addEventListener("click" , function(e){
         popup.style.display = "none";
     }else if(e.target.dataset.day){
         addpardyas(e.target.dataset.day);
-    }else if(e.target.dataset.id){
-        modifier(e.target.)
     }
 })
 
