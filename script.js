@@ -7,7 +7,7 @@ let jourSelect = document.getElementById("day-resrve");
 let jenereatId = 0 ;
 let inputname = document.getElementById("username") ;
 let selectday = document.getElementById("day-resrve");
-let selecthoursebut = document.getElementById("heurdebut");
+let selecthourdebut = document.getElementById("heurdebut");
 let selecthoursfin  = document.getElementById("heurdefin") ;
 let selectrypreserve  = document.getElementById("typereserve") ;
 
@@ -22,6 +22,8 @@ document.addEventListener("click" , function(e){
     }else if(e.target.dataset.day){
         addpardyas(e.target.dataset.day);
     }else if(e.target.classList.contains("detaille__reservation")){
+        console.log(e.target.dataset.id);
+        
         modifier(e.target.dataset.id)
     }
 })
@@ -29,7 +31,7 @@ document.addEventListener("click" , function(e){
 function cleardata(){
         inputname.value = "";
     selectday.value = "";
-    selecthoursebut.value = "";
+    selecthourdebut.value = "";
     selecthoursfin.value = "";
     selectrypreserve.value = "";
 }
@@ -43,23 +45,27 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     
     e.preventDefault();
 
+    let result = validdata();
+    
+    if(!result){
+        return;
+    }
 
+    
 
     const resreve = {
         nom : inputname.value,
         jour : selectday.value,
-        dateDebut : selecthoursebut.value,
+        dateDebut : selecthourdebut.value,
         datefin : selecthoursfin.value,
         typeReserve : selectrypreserve.value,
         ID : jenereatId 
     }
-    jenereatId++ ;
+    jenereatId++;
 
-    reservetions.push(resreve);
+    reservetions.push(resreve);    
+    cleardata();  
     popup.style.display = "none";
-    alert('Réservation ajoutée avec succès !');
-    
-    cleardata();      
 
     affichreservation(resreve);
 })
@@ -69,18 +75,15 @@ function validdata(){
         let char = inputname.value[i];
         if(!isNaN(char) && char !== " "){
             alert("Le nom ne doit pas contenir de chiffres !");
-            return false ;
+            return false;
         }
     }
     
-    if(selecthoursebut.value <= selecthoursebut.value){
+    if(selecthoursfin.value <= selecthourdebut.value){
         alert("L'heure de fin doit être après l'heure de début !");
         return false ;
     }
-     if(!inputname.value ||!selectday.value ||!dateDebut.validdata ||!resreve.typeReserve ) {
-        alert("Veuillez remplir tous les champs obligatoires !");
-        return false ;
-    }
+    return true;
 }
 
 function affichreservation(element) {
@@ -108,7 +111,6 @@ function affichreservation(element) {
                 <span>${element.dateDebut} - ${element.datefin}</span>`;
 
             res.appendChild(newreserve);
-            
         }
     });
 }
@@ -119,7 +121,7 @@ function modifier(element){
 
             inputname.value = elemModi.nom;
             selectday.value = elemModi.jour;
-            selecthoursebut.value = elemModi.dateDebut;
+            selecthourdebut.value = elemModi.dateDebut;
             selecthoursfin.value = elemModi.datefin;
             selectrypreserve.value = elemModi.typeReserve;
             popup.style.display = "flex";
