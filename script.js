@@ -2,6 +2,8 @@
 
 let buttonReserve = document.getElementById("buttonReserver") ;
 let popup = document.querySelector(".sectionform");
+let days = document.querySelectorAll(".days.activ");
+let jourSelect = document.getElementById("day-resrve");
 
 let reservetions = [];
 
@@ -11,13 +13,21 @@ document.addEventListener("click" , function(e){
     } else if(e.target.id === "close__pop"){
         popup.style.display = "none";
     }
-    
+
+})
+
+days.forEach((daysdivs , indix) => {
+    daysdivs.addEventListener("click" , function() {
+        popup.style.display = "flex" ;
+        if( indix < jourSelect.options.length) {
+            jourSelect.value = jourSelect.options[indix + 1].value ;
+        }
+    })
 })
 
 document.querySelector(".form-input").addEventListener("submit" , function(e){
     
     e.preventDefault();
-    const regex = /^[A-Za-z\s\u0621-\u064A]+$/;
 
 
     const resreve = {
@@ -45,9 +55,13 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
         alert("Veuillez remplir tous les champs obligatoires !");
         return false ;
      }
-
+    
     reservetions.push(resreve);
     popup.style.display = "none";
     alert('Réservation ajoutée avec succès !');
+    console.log(reservetions);
+    
 
 })
+
+
