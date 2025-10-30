@@ -100,7 +100,7 @@
     font-weight: bold;
     margin-bottom: 10px;
     cursor: pointer;
-    z-index: 99;
+    z-index: 10;
 }
 
 .detaille__reservation span:last-child  {
@@ -123,6 +123,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5 );
+    z-index: 11;
     
 }
 
@@ -178,4 +179,22 @@
 }
 .closs__form:hover {
     background-color: #DEDEDE ;
+}
+
+
+/* ========================== */
+/* scc de form modifications */
+/* =========================*/
+
+.button__modifSupp {
+    display: flex;
+
+}
+
+.modifier {
+    background-color: green;
+}
+
+.supprumer {
+    background-color: red;
 }

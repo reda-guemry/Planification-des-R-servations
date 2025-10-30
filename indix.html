@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="form-input-modif">
-                        <label for="username">Heure de début</label>
+                        <label for="heurdebut">Heure de début</label>
                         <select name="hours" id="heurdebut" required>
                             <option value="">--:--</option>
                             <option value="11:00">11:00</option>
@@ -116,6 +116,89 @@
                     </div>
                     
                     <button type="submit" >Ajouter la réservation </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- sections de form du modifications  -->
+        <!-- ================================== -->
+
+
+        <section class="sectionform" id="formModdifications">
+            <div class="formReservation">
+                <span id="close__pop" class="closs__form">&times;</span>
+                <h3>Modifier ou supprumer réservation</h3>
+                <form class="form-input" action="#">
+                    <div class="form-input-modif">
+                        <label for="modifi-username">Nouveu nom du client</label>
+                        <input id="modifi-username" type="text" required>
+                    </div>
+
+                    <div class="form-input-modif">
+                        <label for="modifie-day-resrve">Nouveu day pour reservations</label>
+                        <select name="hours" id="modifie-day-resrve" required>
+                            <option value="">----</option>
+                            <option value="Lundi">Lundi</option>
+                            <option value="Mardi">Mardi</option>
+                            <option value="Mercredi">Mercredi</option>
+                            <option value="Jeudi">Jeudi</option>
+                            <option value="Vendredi">Vendredi</option>
+                        </select>
+                    </div>
+
+                    <div class="form-input-modif">
+                        <label for="modif-heurdebut">Nouveu Heure de début</label>
+                        <select name="hours" id="modif-heurdebut" required>
+                            <option value="">--:--</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                            <option value="22:00">22:00</option>
+                        </select>
+                    </div>
+
+                    <div class="form-input-modif">
+                        <label for="heurdefin">Nouveu Heure de fin</label>
+                        <select name="hours" id="heurdefin" required>
+                            <option value="">--:--</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                            <option value="22:00">22:00</option>
+                        </select>
+                    </div>
+
+                    <div class="form-input-modif">
+                        <label for="typereserve">Nouveu Type de réservation</label>
+                        <select name="type" id="typereserve" required>
+                            <option value="">Sélectionnez</option>
+                            <option value="sur place">Sur place</option>
+                            <option value="VIP">VIP</option>
+                            <option value="anniversaire">Anniversaire</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <button class="modifier" >Ajouter modifications</button>
+                        <button class="supprumer" >Supprumer reservations</button>
+                    </div>
+
                 </form>
             </div>
         </section>

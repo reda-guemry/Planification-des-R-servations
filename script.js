@@ -10,6 +10,10 @@ let selectday = document.getElementById("day-resrve");
 let selecthourdebut = document.getElementById("heurdebut");
 let selecthoursfin  = document.getElementById("heurdefin") ;
 let selectrypreserve  = document.getElementById("typereserve") ;
+let popformmodifi = document.getElementById("formModdifications");
+let inputmodifiuser = document.getElementById("modifi-username")
+let modifierselectdzy = document.getElementById("modifie-day-resrve")
+let
 
 let reservetions = [];
 
@@ -124,7 +128,7 @@ function modifier(element){
             selecthourdebut.value = elemModi.dateDebut;
             selecthoursfin.value = elemModi.datefin;
             selectrypreserve.value = elemModi.typeReserve;
-            popup.style.display = "flex";
+            formModdifications.style.display = "flex";
             
         }
     })
