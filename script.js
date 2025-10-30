@@ -10,9 +10,9 @@ let reservetions = [];
 document.addEventListener("click" , function(e){
     if(e.target.tagName === "BUTTON"){
         popup.style.display = "flex";
+        affichreservations();
     } else if(e.target.id === "close__pop"){
         popup.style.display = "none";
-        affichreservations();
     }
 
 })
@@ -67,6 +67,31 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
 })
 
 
-function affichreservations()
+function affichreservations() {
+
+    days.forEach((res) => {
+
+        reservetions.forEach((element) => {
+            if(res.dataset.day === element.jour){
+                const newreserve = document.createElement("div");
+                newreserve.classList.add("detaille__reservation");
+                switch(element.typeReserve){
+                    case "Sur place" : 
+                        newreserve.style.background = "green";
+                        break ;
+                    case "VIP" : 
+                        newreserve.style.background = "gold";
+                        break ;
+                    case "Anniversaire" : 
+                        newreserve.style.background = "red";
+                        break ;
+                }
+                newreserve.textContent = `${element.nom} (${element.typeReserve}) ${element.dateDebut} - ${element.datefin}`;
+                res.appendChild(newreserve);
+            }
+        });
+    })
+
+}
 
 
