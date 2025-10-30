@@ -16,11 +16,11 @@ let reservetions = [];
 document.addEventListener("click" , function(e){
     if(e.target.tagName === "BUTTON"){
         popup.style.display = "flex";
-    } else if(e.target.id === "close__pop"){
-        popup.style.display = "none";
     }else if(e.target.dataset.day){
         addpardyas(e.target.dataset.day);
     }else if(e.target.classList.contains("detaille__reservation")){
+        console.log(e.target.dataset.id);
+        
         modifier(e.target.dataset.id)
     }
 })
@@ -29,15 +29,6 @@ function addpardyas(data){
     jourSelect.value = data ;
     popup.style.display = "flex" ;
 }
-
-// days.forEach((daysdivs , indix) => {
-//     daysdivs.addEventListener("click" , function() {
-//         popup.style.display = "flex" ;
-//         if( indix < jourSelect.options.length) {
-//             jourSelect.value = jourSelect.options[indix + 1].value ;
-//         }
-//     })
-// })
 
 document.querySelector(".form-input").addEventListener("submit" , function(e){
     
@@ -84,6 +75,16 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     selecthoursfin.value = "";
     selectrypreserve.value = "";
 
+    document.addEventListener("click" , function(e){
+         if(e.target.id === "close__pop"){
+            popup.style.display = "none";
+            inputname.value = "";
+            selectday.value = "";
+            selecthoursebut.value = "";
+            selecthoursfin.value = "";
+            selectrypreserve.value = "";
+         }
+    })
     affichreservation(resreve);
     console.log(reservetions);
 })
@@ -120,13 +121,17 @@ function affichreservation(element) {
 }
 
 function modifier(element){
+    console.log("wa dkhalt")
     reservetions.forEach((elemModi) => {
-        if(element === elemModi.ID){
-            inputname.value = element.nom;
-            selectday.value = element.jour;
-            selecthoursebut.value = element.dateDebut;
-            selecthoursfin.value = element.datefin;
-            selectrypreserve.value = element.typeReserve;
+        if(element == elemModi.ID){
+            console.log("wa dkhalt ta lconditions")
+
+            inputname.value = elemModi.nom;
+            selectday.value = elemModi.jour;
+            selecthoursebut.value = elemModi.dateDebut;
+            selecthoursfin.value = elemModi.datefin;
+            selectrypreserve.value = elemModi.typeReserve;
+
             popup.style.display = "flex";
 
         }
