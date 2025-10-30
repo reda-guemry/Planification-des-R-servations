@@ -18,18 +18,26 @@ document.addEventListener("click" , function(e){
         popup.style.display = "flex";
     } else if(e.target.id === "close__pop"){
         popup.style.display = "none";
+    }else if(e.target.dataset.day){
+        addpardyas(e.target.dataset.day);
+    }else if(e.target.dataset.id){
+        modifier(e.target.)
     }
-
 })
 
-days.forEach((daysdivs , indix) => {
-    daysdivs.addEventListener("click" , function() {
-        popup.style.display = "flex" ;
-        if( indix < jourSelect.options.length) {
-            jourSelect.value = jourSelect.options[indix + 1].value ;
-        }
-    })
-})
+function addpardyas(data){
+    jourSelect.value = data ;
+    popup.style.display = "flex" ;
+}
+
+// days.forEach((daysdivs , indix) => {
+//     daysdivs.addEventListener("click" , function() {
+//         popup.style.display = "flex" ;
+//         if( indix < jourSelect.options.length) {
+//             jourSelect.value = jourSelect.options[indix + 1].value ;
+//         }
+//     })
+// })
 
 document.querySelector(".form-input").addEventListener("submit" , function(e){
     
@@ -76,12 +84,12 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     selecthoursfin.value = "";
     selectrypreserve.value = "";
 
-    affichreservationUnique(resreve);
+    affichreservation(resreve);
     console.log(reservetions);
 })
 
 
-function affichreservationUnique(element) {
+function affichreservation(element) {
     days.forEach((res) => {
         if (res.dataset.day === element.jour) {
             
@@ -100,6 +108,7 @@ function affichreservationUnique(element) {
                     break;
             }
 
+            newreserve.dataset.id = element.ID ;
             newreserve.innerHTML = `<span>${element.nom}</span> 
                 <span>(${element.typeReserve})</span>
                 <span>${element.dateDebut} - ${element.datefin}</span>`;
@@ -111,7 +120,17 @@ function affichreservationUnique(element) {
 }
 
 function modifier(element){
-    popup.style.display = "flex"; 
+    reservetions.forEach((elemModi) => {
+        if(element === elemModi.ID){
+            inputname.value = element.nom;
+            selectday.value = element.jour;
+            selecthoursebut.value = element.dateDebut;
+            selecthoursfin.value = element.datefin;
+            selectrypreserve.value = element.typeReserve;
+            popup.style.display = "flex";
+
+        }
+    })
 
 
 }
