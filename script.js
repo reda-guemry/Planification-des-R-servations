@@ -12,6 +12,7 @@ document.addEventListener("click" , function(e){
         popup.style.display = "flex";
     } else if(e.target.id === "close__pop"){
         popup.style.display = "none";
+        affichreservations();
     }
 
 })
@@ -58,10 +59,14 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     
     reservetions.push(resreve);
     popup.style.display = "none";
+    affichreservations();
     alert('Réservation ajoutée avec succès !');
-    console.log(reservetions);
-    
 
+    
+    console.log(reservetions);
 })
+
+
+function affichreservations()
 
 
