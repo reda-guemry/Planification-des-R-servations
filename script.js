@@ -29,7 +29,7 @@ document.addEventListener("click" , function(e){
         addpardyas(e.target.dataset.day);
     }else if(e.target.classList.contains("detaille__reservation")){
         console.log(e.target.dataset.id);
-        modifier(e.target.dataset.id)
+        modifier(e.target.dataset.id , e.target)
     }else if(e.target.id === "clos_modifform"){
        popformmodifi.style.display = "none" 
     }
@@ -138,7 +138,7 @@ function affichreservation(element) {
     });
 }
 
-function modifier(element){
+function modifier(element , element2){
     reservetions.forEach((elemModi) => {
         if(element == elemModi.ID){
 
@@ -148,8 +148,6 @@ function modifier(element){
             modifelectheurfin.value = elemModi.datefin;
             modifselecttypereserve.value = elemModi.typeReserve;
             formModdifications.style.display = "flex";
-
-
 
             document.querySelector(".modifier").addEventListener("submit" , function(e) {
                 
@@ -163,11 +161,12 @@ function modifier(element){
                     elemModi.dateDebut = modifselectheurdebut.value ;
                     elemModi.datefin = modifelectheurfin.value ;
                     elemModi.typeReserve = modifselecttypereserve.value ;
-                    
-                }
-                
-                
 
+                    element2.innerHTML = `<span>${elemModi.nom}</span> 
+                                        <span>(${elemModi.typeReserve})</span>
+                                        <span>${elemModi.dateDebut} - ${elemModi.datefin}</span>`;
+
+                }
             })
         }
     })
