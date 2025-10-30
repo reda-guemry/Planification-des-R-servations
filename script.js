@@ -4,13 +4,18 @@ let buttonReserve = document.getElementById("buttonReserver") ;
 let popup = document.querySelector(".sectionform");
 let days = document.querySelectorAll(".days.activ");
 let jourSelect = document.getElementById("day-resrve");
+let jenereatId = 0 ;
+let inputname = document.getElementById("username") ;
+let selectday = document.getElementById("day-resrve");
+let selecthoursebut = document.getElementById("heurdebut");
+let selecthoursfin  = document.getElementById("heurdefin") ;
+let selectrypreserve  = document.getElementById("typereserve") ;
 
 let reservetions = [];
 
 document.addEventListener("click" , function(e){
     if(e.target.tagName === "BUTTON"){
         popup.style.display = "flex";
-        affichreservations();
     } else if(e.target.id === "close__pop"){
         popup.style.display = "none";
     }
@@ -30,11 +35,6 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     
     e.preventDefault();
 
-    let inputname = document.getElementById("username") ;
-    let selectday = document.getElementById("day-resrve");
-    let selecthoursebut = document.getElementById("heurdebut");
-    let selecthoursfin  = document.getElementById("heurdefin") ;
-    let selectrypreserve  = document.getElementById("typereserve") ;
 
 
     const resreve = {
@@ -42,8 +42,11 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
         jour : selectday.value,
         dateDebut : selecthoursebut.value,
         datefin : selecthoursfin.value,
-        typeReserve : selectrypreserve.value
+        typeReserve : selectrypreserve.value,
+        ID : jenereatId 
     }
+
+    jenereatId++ ;
 
     for(let i = 0 ; i < resreve.nom.length ; i++){
         let char = resreve.nom[i];
@@ -107,5 +110,10 @@ function affichreservationUnique(element) {
     });
 }
 
+function modifier(element){
+    popup.style.display = "flex"; 
+
+
+}
 
 
