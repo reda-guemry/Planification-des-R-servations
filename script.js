@@ -16,6 +16,8 @@ let modifierselectday = document.getElementById("modifie-day-resrve");
 let modifselectheurdebut = document.getElementById("modif-heurdebut");
 let modifelectheurfin = document.getElementById("modif-heurdefin");
 let modifselecttypereserve = document.getElementById("modif-typereserve");
+let currentidetid ;
+let currentelementedit ;
 
 let reservetions = [];
 
@@ -139,9 +141,10 @@ function affichreservation(element) {
 }
 
 function modifier(element , element2){
+    
     reservetions.forEach((elemModi) => {
         if(element == elemModi.ID){
-
+            
             inputmodifiuser.value = elemModi.nom;
             modifierselectday.value = elemModi.jour;
             modifselectheurdebut.value = elemModi.dateDebut;
@@ -149,27 +152,39 @@ function modifier(element , element2){
             modifselecttypereserve.value = elemModi.typeReserve;
             formModdifications.style.display = "flex";
 
-            document.querySelector(".modifier").addEventListener("submit" , function(e) {
-                
-                if(e.target.classList.contains("modifier")){
-                    e.preventDefault();
+            currentidetid = element ;
+            currentelementedit = element2 ;
 
-                    validdatamodif() ; 
-
-                    elemModi.nom = inputmodifiuser.value;
-                    elemModi.jour = modifierselectday.value ;
-                    elemModi.dateDebut = modifselectheurdebut.value ;
-                    elemModi.datefin = modifelectheurfin.value ;
-                    elemModi.typeReserve = modifselecttypereserve.value ;
-
-                    element2.innerHTML = `<span>${elemModi.nom}</span> 
-                                        <span>(${elemModi.typeReserve})</span>
-                                        <span>${elemModi.dateDebut} - ${elemModi.datefin}</span>`;
-
-                }
-            })
         }
     })
 }
 
+popformmodifi.addEventListener("submit" , function(e) {
+    e.preventDefault();
+
+    let result = validdatamodif() ; 
+
+    if(!result){
+        return ;
+    }
+            reservetions.forEach((elemModi) => {
+            if(elemModi.ID == currentidetid){
+                elemModi.nom = inputmodifiuser.value;
+                elemModi.jour = modifierselectday.value ;
+                elemModi.dateDebut = modifselectheurdebut.value ;
+                elemModi.datefin = modifelectheurfin.value ;
+                elemModi.typeReserve = modifselecttypereserve.value ;
+        
+                currentelementedit.innerHTML = `
+                    <span>${elemModi.nom}</span> 
+                    <span>(${elemModi.typeReserve})</span>
+                    <span>${elemModi.dateDebut} - ${elemModi.datefin}</span>`;
+                
+
+                }
+            })
+            
+    popformmodifi.style.display = "none";
+    console.log(reservetions);
+})
 
