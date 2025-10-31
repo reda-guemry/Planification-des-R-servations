@@ -26,15 +26,20 @@ let reservetions = [];
 document.addEventListener("click" , function(e){
     if(e.target.id === "buttonReserver"){
         popup.style.display = "flex";
+        
     }else if(e.target.id === "close__pop"){
         popup.style.display = "none";
         cleardata();
+
     }else if(e.target.dataset.day){
         addpardyas(e.target.dataset.day);
+
     }else if(e.target.classList.contains("detaille__reservation")){
         modifier(e.target.dataset.id , e.target)
+
     }else if(e.target.id === "clos_modifform"){
        popformmodifi.style.display = "none" 
+
     }
 })
 
@@ -96,7 +101,6 @@ function validdatamodif(){
     }
     for(ele of reservetions) {
         if(ele.jour == modifierselectday.value && currentidetid != ele.ID){ 
-            console.log("wa dkhlt");
             if(modifselectheurdebut.value == ele.dateDebut){
                 alert("Cette heure est déjà réservée !");
                 return false ;

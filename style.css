@@ -27,14 +27,20 @@
 }
 
 .nav__reserver button {
-    border: 1px bold black;
-    padding: 15px 40px ;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    padding: 12px 30px ;
     cursor: pointer;
     border-radius: 25px;
-    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border : none ;
          
 }
-
+.nav__reserver button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
 
 
 
