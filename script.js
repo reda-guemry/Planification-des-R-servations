@@ -43,7 +43,7 @@ function cleardata(){
     selectday.value = "";
     selecthourdebut.value = "";
     selecthoursfin.value = "";
-    inputnombreperson = "";
+    inputnombreperson.value = "";
     selectrypreserve.value = "";
 }
 
@@ -69,7 +69,7 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
         dateDebut : selecthourdebut.value,
         datefin : selecthoursfin.value,
         typeReserve : selectrypreserve.value,
-        nombreperson : inputnombreperson,
+        nombreperson : inputnombreperson.value,
         ID : jenereatId 
     }
     jenereatId++;
@@ -94,12 +94,13 @@ function validdatamodif(){
         alert("L'heure de fin doit être après l'heure de début !");
         return false ;
     }
-    reservetions.forEach((ele) => {
-        if(modifselectheurdebut.value == ele.dateDebut){
-            alert("L'heure de fin doit être après l'heure de début !");
-            return false ;
-        }
-    })
+    for(ele of reservetions) {
+        if(ele.jour == modifierselectday.value)
+            if(modifselectheurdebut.value == ele.dateDebut){
+                alert("L'heure de fin doit être après l'heure de début !");
+                return false ;
+            }
+    }
     
     return true;
 }
@@ -163,11 +164,12 @@ function modifier(element , element2){
     
     reservetions.forEach((elemModi) => {
         if(element == elemModi.ID){
-            
+            console.log(elemModi)
             inputmodifiuser.value = elemModi.nom;
             modifierselectday.value = elemModi.jour;
             modifselectheurdebut.value = elemModi.dateDebut;
             modifelectheurfin.value = elemModi.datefin;
+            modifinputnombreperson.value = elemModi.nombreperson ; 
             modifselecttypereserve.value = elemModi.typeReserve;
             formModdifications.style.display = "flex";
 
@@ -192,17 +194,18 @@ popformmodifi.addEventListener("submit" , function(e) {
                 elemModi.jour = modifierselectday.value ;
                 elemModi.dateDebut = modifselectheurdebut.value ;
                 elemModi.datefin = modifelectheurfin.value ;
+                elemModi.nombreperson = modifinputnombreperson.value ;
                 elemModi.typeReserve = modifselecttypereserve.value ;
                 
-                switch (element.typeReserve) {
+                switch (elemModi.typeReserve) {
                     case "sur place":
-                        newreserve.style.background = "gray";
+                        currentelementedit.style.background = "gray";
                         break;
                     case "VIP":
-                        newreserve.style.background = "gold";
+                        currentelementedit.style.background = "gold";
                         break;
                     case "anniversaire":
-                        newreserve.style.background = "red";
+                        currentelementedit.style.background = "red";
                         break;
                 }
                 currentelementedit.innerHTML = `
