@@ -4,7 +4,6 @@ let buttonReserve = document.getElementById("buttonReserver") ;
 let popup = document.querySelector(".sectionform");
 let days = document.querySelectorAll(".days.activ");
 let jourSelect = document.getElementById("day-resrve");
-let jenereatId = 0 ;
 let inputname = document.getElementById("username") ;
 let selectday = document.getElementById("day-resrve");
 let selecthourdebut = document.getElementById("heurdebut");
@@ -21,7 +20,13 @@ let modifinputnombreperson = document.getElementById("modif-nombreprsn")
 let currentidetid ;
 let currentelementedit ;
 
-let reservetions = [];
+let reservetions = JSON.parse(localStorage.getItem("data")) || [];
+
+let jenereatId = reservetions > 0 ? reservetions[reservetions.length - 1].ID + 1 : 0 ;
+
+reservetions.forEach((resr) => {
+    affichreservation(resr);
+})
 
 document.addEventListener("click" , function(e){
     if(e.target.id === "buttonReserver"){
@@ -79,7 +84,10 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
     }
     jenereatId++;
 
-    reservetions.push(resreve);    
+    reservetions.push(resreve);
+    localStorage.setItem("data" , JSON.stringify(reservetions));
+    console.log(JSON.parse(localStorage.getItem("data")));
+    
     cleardata();  
     popup.style.display = "none";
 
@@ -203,6 +211,7 @@ popformmodifi.addEventListener("submit" , function(e) {
             elemModi.datefin = modifelectheurfin.value ;
             elemModi.nombreperson = modifinputnombreperson.value ;
             elemModi.typeReserve = modifselecttypereserve.value ;
+            localStorage.setItem("data" , JSON.stringify(reservetions))    ;
             
             switch (elemModi.typeReserve) {
                 case "sur place":
@@ -232,5 +241,9 @@ document.querySelector(".supprumer").addEventListener("click" , function() {
     
     reservetions = reservetions.filter(elemsupp => elemsupp.ID != currentidetid);
     currentelementedit.remove();
+    localStorage.setItem("data" , JSON.stringify(reservetions));
     popformmodifi.style.display = "none";
 })
+
+
+
