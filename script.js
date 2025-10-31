@@ -95,7 +95,7 @@ function validdatamodif(){
         return false ;
     }
     for(ele of reservetions) {
-        if(ele.jour == modifierselectday.value && currentidetid == ele.ID){ 
+        if(ele.jour == modifierselectday.value && currentidetid != ele.ID){ 
             console.log("wa dkhlt");
             if(modifselectheurdebut.value == ele.dateDebut){
                 alert("Cette heure est déjà réservée !");
