@@ -95,11 +95,13 @@ function validdatamodif(){
         return false ;
     }
     for(ele of reservetions) {
-        if(ele.jour == modifierselectday.value)
+        if(ele.jour == modifierselectday.value && currentidetid == ele.ID){ 
+            console.log("wa dkhlt");
             if(modifselectheurdebut.value == ele.dateDebut){
-                alert("L'heure de fin doit être après l'heure de début !");
+                alert("Cette heure est déjà réservée !");
                 return false ;
             }
+        }
     }
     
     return true;
@@ -123,7 +125,7 @@ function validdata(){
     for(ele of reservetions) {
         if(ele.jour == selectday.value)
             if(selecthourdebut.value == ele.dateDebut){
-                alert("L'heure de fin doit être après l'heure de début !");
+                alert("Cette heure est déjà réservée !");
                 return false ;
             }
     }
@@ -164,7 +166,6 @@ function modifier(element , element2){
     
     reservetions.forEach((elemModi) => {
         if(element == elemModi.ID){
-            console.log(elemModi)
             inputmodifiuser.value = elemModi.nom;
             modifierselectday.value = elemModi.jour;
             modifselectheurdebut.value = elemModi.dateDebut;
@@ -188,34 +189,36 @@ popformmodifi.addEventListener("submit" , function(e) {
     if(!result){
         return ;
     }
-            reservetions.forEach((elemModi) => {
-            if(elemModi.ID == currentidetid){
-                elemModi.nom = inputmodifiuser.value;
-                elemModi.jour = modifierselectday.value ;
-                elemModi.dateDebut = modifselectheurdebut.value ;
-                elemModi.datefin = modifelectheurfin.value ;
-                elemModi.nombreperson = modifinputnombreperson.value ;
-                elemModi.typeReserve = modifselecttypereserve.value ;
-                
-                switch (elemModi.typeReserve) {
-                    case "sur place":
-                        currentelementedit.style.background = "gray";
-                        break;
-                    case "VIP":
-                        currentelementedit.style.background = "gold";
-                        break;
-                    case "anniversaire":
-                        currentelementedit.style.background = "red";
-                        break;
-                }
-                currentelementedit.innerHTML = `
-                    <span>${elemModi.nom}</span> 
-                    <span>(${elemModi.typeReserve})</span>
-                    <span>${elemModi.dateDebut} - ${elemModi.datefin}</span>`;
-                
 
-                }
-            })
+
+    reservetions.forEach((elemModi) => {
+        if(elemModi.ID == currentidetid){
+            elemModi.nom = inputmodifiuser.value;
+            elemModi.jour = modifierselectday.value ;
+            elemModi.dateDebut = modifselectheurdebut.value ;
+            elemModi.datefin = modifelectheurfin.value ;
+            elemModi.nombreperson = modifinputnombreperson.value ;
+            elemModi.typeReserve = modifselecttypereserve.value ;
+            
+            switch (elemModi.typeReserve) {
+                case "sur place":
+                    currentelementedit.style.background = "gray";
+                    break;
+                case "VIP":
+                    currentelementedit.style.background = "gold";
+                    break;
+                case "anniversaire":
+                    currentelementedit.style.background = "red";
+                    break;
+            }
+            currentelementedit.innerHTML = `
+                <span>${elemModi.nom}</span> 
+                <span>(${elemModi.typeReserve})</span>
+                <span>${elemModi.dateDebut} - ${elemModi.datefin}</span>`;
+            
+
+            }
+                })
             
     popformmodifi.style.display = "none";
 })
