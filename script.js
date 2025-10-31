@@ -173,7 +173,18 @@ popformmodifi.addEventListener("submit" , function(e) {
                 elemModi.dateDebut = modifselectheurdebut.value ;
                 elemModi.datefin = modifelectheurfin.value ;
                 elemModi.typeReserve = modifselecttypereserve.value ;
-        
+                
+                switch (element.typeReserve) {
+                    case "sur place":
+                        newreserve.style.background = "gray";
+                        break;
+                    case "VIP":
+                        newreserve.style.background = "gold";
+                        break;
+                    case "anniversaire":
+                        newreserve.style.background = "red";
+                        break;
+                }
                 currentelementedit.innerHTML = `
                     <span>${elemModi.nom}</span> 
                     <span>(${elemModi.typeReserve})</span>
@@ -188,7 +199,7 @@ popformmodifi.addEventListener("submit" , function(e) {
 
 
 document.querySelector(".supprumer").addEventListener("click" , function() {
-        
+    
     reservetions = reservetions.filter(elemsupp => elemsupp.ID != currentidetid);
     currentelementedit.remove();
     popformmodifi.style.display = "none";
