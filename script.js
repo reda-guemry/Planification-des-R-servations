@@ -22,7 +22,7 @@ let currentelementedit ;
 let reservetions = [];
 
 document.addEventListener("click" , function(e){
-    if(e.target.tagName === "BUTTON"){
+    if(e.target.id === "buttonReserver"){
         popup.style.display = "flex";
     }else if(e.target.id === "close__pop"){
         popup.style.display = "none";
