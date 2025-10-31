@@ -80,14 +80,13 @@
     padding: 20px 10px;
     transition: all 0.3s ease;
 }
-.evrrycartdays {
-    
-}
+
 
 .evrrycartdays h4{
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: #555;
 }
 
 
@@ -95,7 +94,7 @@
 .activ:hover {
     background-color: #1F2DF2;
     box-shadow: 0 10px 20px #797979;
-    transform: translateY(-8px);    
+    transform: translateY(-5px);    
 }
 .unactive {
     pointer-events: none;
@@ -115,7 +114,7 @@
     flex-direction: column;
     align-items: center;
     gap: 3px;
-    padding: 10px;
+    padding : 10px;
     border-radius: 20px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -127,6 +126,10 @@
     font-size: 0.7rem;
 }
 
+.detaille__reservation:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
 
 /*========================*/
 /* part css for formuler du add un reseerve   */
