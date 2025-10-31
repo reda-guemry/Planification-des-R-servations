@@ -247,3 +247,4 @@ document.querySelector(".supprumer").addEventListener("click" , function() {
 
 
 
+
