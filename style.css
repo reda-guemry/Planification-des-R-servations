@@ -39,14 +39,6 @@
 
 
 
-.nav__reserver--nomDays {
-    display: grid;
-    grid-template-columns: repeat(7 , 1fr);
-    width: 100%;
-    justify-items: center;
-    font-size: 2rem;
-    
-}
 
 /*========================*/
 /* part css for calendrier   */
@@ -72,10 +64,18 @@
     transition: all 0.3s ease;
 }
 
+.evrrycartdays h4{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+
+
 .activ:hover {
     background-color: #1F2DF2;
     box-shadow: 0 10px 20px #797979;
-    transform: translateY(-8px);
+    transform: translateY(-8px);    
 }
 .unactive {
     pointer-events: none;
@@ -206,4 +206,4 @@
 
 
 
-@ma
+@media (min-width: )
