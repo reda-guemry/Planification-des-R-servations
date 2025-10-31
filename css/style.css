@@ -150,13 +150,15 @@
 }
 
 .formReservation {
-    width: 35%;
+    width: 90%;
+    max-width: 500px;
     display: grid;
     gap: 20px;
     padding: 30px ;
     background: white;  
     position: relative;  
     border-radius: 20px;
+    margin : 30px;
 }
 
 .form-input {
@@ -175,6 +177,7 @@
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccccccfa;
+    
     
 }
 
@@ -219,10 +222,12 @@
 
 .modifier {
     background-color: green;
+    font-size: 1rem ;
 }
 
 .supprumer {
     background-color: red;
+    font-size: 1rem ;
 }
 
 
@@ -242,6 +247,7 @@
     .detaille__reservation span:last-child  {
         font-size: 1.5rem;
     }
+    
 }
 
 @media (max-width: 1000px ) {
