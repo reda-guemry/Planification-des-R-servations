@@ -188,11 +188,8 @@ popformmodifi.addEventListener("submit" , function(e) {
 
 
 document.querySelector(".supprumer").addEventListener("click" , function() {
-    reservetions.forEach((elesupp) => {
-        if(elesupp.ID === currentidetid){
-            elesupp.remove();
-            currentelementedit.remove();
-            popformmodifi.style.display = "none";
-        }
-    })
+        
+    reservetions = reservetions.filter(elemsupp => elemsupp.ID != currentidetid);
+    currentelementedit.remove();
+    popformmodifi.style.display = "none";
 })
