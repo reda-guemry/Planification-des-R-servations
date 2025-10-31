@@ -79,7 +79,7 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
 
 function validdatamodif(){
     for(let i = 0 ; i < inputmodifiuser.value.length ; i++){
-        let char = inputname.value[i];
+        let char = inputmodifiuser.value[i];
         if(!isNaN(char) && char !== " "){
             alert("Le nom ne doit pas contenir de chiffres !");
             return false;
@@ -114,12 +114,14 @@ function validdata(){
         alert("L'heure de fin doit être après l'heure de début !");
         return false ;
     }
-    reservetions.forEach((ele) => {
-        if(selecthourdebut.value == ele.dateDebut){
-            alert("L'heure de fin doit être après l'heure de début !");
-            return false ;
-        }
-    })
+    
+    for(ele of reservetions) {
+        if(ele.jour == selectday.value)
+            if(selecthourdebut.value == ele.dateDebut){
+                alert("L'heure de fin doit être après l'heure de début !");
+                return false ;
+            }
+    }
     
     return true;
 }
