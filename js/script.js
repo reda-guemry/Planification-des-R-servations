@@ -22,7 +22,7 @@ let currentelementedit ;
 
 let reservetions = JSON.parse(localStorage.getItem("data")) || [];
 
-let jenereatId = reservetions > 0 ? reservetions[reservetions.length - 1].ID + 1 : 0 ;
+let jenereatId = reservetions.length > 0 ? reservetions[reservetions.length - 1].ID + 1 : 0 ;
 
 reservetions.forEach((resr) => {
     affichreservation(resr);
