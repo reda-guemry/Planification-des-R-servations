@@ -30,7 +30,6 @@ document.addEventListener("click" , function(e){
     }else if(e.target.dataset.day){
         addpardyas(e.target.dataset.day);
     }else if(e.target.classList.contains("detaille__reservation")){
-        console.log(e.target.dataset.id);
         modifier(e.target.dataset.id , e.target)
     }else if(e.target.id === "clos_modifform"){
        popformmodifi.style.display = "none" 
@@ -185,6 +184,15 @@ popformmodifi.addEventListener("submit" , function(e) {
             })
             
     popformmodifi.style.display = "none";
-    console.log(reservetions);
 })
 
+
+document.querySelector(".supprumer").addEventListener("click" , function() {
+    reservetions.forEach((elesupp) => {
+        if(elesupp.ID === currentidetid){
+            elesupp.remove();
+            currentelementedit.remove();
+            popformmodifi.style.display = "none";
+        }
+    })
+})
