@@ -10,12 +10,14 @@ let selectday = document.getElementById("day-resrve");
 let selecthourdebut = document.getElementById("heurdebut");
 let selecthoursfin  = document.getElementById("heurdefin") ;
 let selectrypreserve  = document.getElementById("typereserve") ;
+let inputnombreperson = document.getElementById("nombreprsn");
 let popformmodifi = document.getElementById("formModdifications");
 let inputmodifiuser = document.getElementById("modifi-username");
 let modifierselectday = document.getElementById("modifie-day-resrve");
 let modifselectheurdebut = document.getElementById("modif-heurdebut");
 let modifelectheurfin = document.getElementById("modif-heurdefin");
 let modifselecttypereserve = document.getElementById("modif-typereserve");
+let modifinputnombreperson = document.getElementById("modif-nombreprsn")
 let currentidetid ;
 let currentelementedit ;
 
@@ -41,6 +43,7 @@ function cleardata(){
     selectday.value = "";
     selecthourdebut.value = "";
     selecthoursfin.value = "";
+    inputnombreperson = "";
     selectrypreserve.value = "";
 }
 
@@ -66,6 +69,7 @@ document.querySelector(".form-input").addEventListener("submit" , function(e){
         dateDebut : selecthourdebut.value,
         datefin : selecthoursfin.value,
         typeReserve : selectrypreserve.value,
+        nombreperson : inputnombreperson,
         ID : jenereatId 
     }
     jenereatId++;
