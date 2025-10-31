@@ -206,4 +206,24 @@
 
 
 
-@media (min-width: )
+@media (max-width: 1000px ){
+    .callendri {
+        grid-template-columns: repeat(auto-fill , minmax(150px , 1fr));
+        
+    }
+    html {
+        font-size: 12px;
+    }
+    .detaille__reservation span {
+        font-size: 1.4rem;
+    }
+    .detaille__reservation span:last-child  {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 1000px ) {
+    html{
+        font-size : 8px ;
+    }
+}
