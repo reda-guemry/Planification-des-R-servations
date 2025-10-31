@@ -90,10 +90,14 @@ function validdatamodif(){
         alert("L'heure de fin doit être après l'heure de début !");
         return false ;
     }
-    return true;
-    reservetions.forEach("ele" => {
-        
+    reservetions.forEach((ele) => {
+        if(modifselectheurdebut.value == ele.dateDebut){
+            alert("L'heure de fin doit être après l'heure de début !");
+            return false ;
+        }
     })
+    
+    return true;
 }
 
 
@@ -110,6 +114,13 @@ function validdata(){
         alert("L'heure de fin doit être après l'heure de début !");
         return false ;
     }
+    reservetions.forEach((ele) => {
+        if(selecthourdebut.value == ele.dateDebut){
+            alert("L'heure de fin doit être après l'heure de début !");
+            return false ;
+        }
+    })
+    
     return true;
 }
 
